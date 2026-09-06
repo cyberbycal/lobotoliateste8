@@ -396,6 +396,46 @@
       + (CAMP_GLYPH[id]||'') + '</svg>';
   }
 
+  /* ============ MAPA = A IMAGEM EXATA QUE VOCÊ MANDOU ============
+     Em vez de tentar desenhar um mapa parecido, agora é literalmente
+     a print oficial que você anexou, com pontinhos clicáveis em cima
+     de cada camp (posição em % pra funcionar em qualquer tamanho de
+     tela). Se por algum motivo o arquivo da imagem não estiver no
+     repositório, cai pro esquema desenhado de antes — nunca fica
+     com buraco na tela. */
+  const MAP_IMG = "sr-map-reference.jpg";
+  const MAP_HOTSPOTS = [
+    { id:"herald", x:41.3, y:23.2 },
+    { id:"krugs",  x:49.8, y:14.5 },
+    { id:"red",    x:51.1, y:22.3 },
+    { id:"raptors",x:57.5, y:30.5 },
+    { id:"gromp",  x:26.8, y:34.4 },
+    { id:"blue",   x:34.3, y:37.1 },
+    { id:"wolves", x:34.4, y:45.5 },
+    { id:"wolves", x:71.8, y:35.6 },
+    { id:"blue",   x:73.5, y:44.0 },
+    { id:"gromp",  x:82.1, y:45.5 },
+    { id:"raptors",x:51.5, y:51.8 },
+    { id:"red",    x:56.0, y:61.0 },
+    { id:"dragon", x:66.7, y:59.0 },
+    { id:"krugs",  x:60.8, y:68.7 }
+  ];
+  window.__riftMapFallback = function(imgEl){
+    const wrap = imgEl.closest(".rift-schematic");
+    if(wrap) wrap.innerHTML = riftSvg(JUNGLE_PATHS[activePath]);
+  };
+  function riftPhotoMap(path){
+    const hotspots = MAP_HOTSPOTS.map(function(h){
+      const onRoute = path.route.indexOf(h.id) !== -1;
+      const c = JUNGLE_CAMPS[h.id];
+      return '<button type="button" class="rift-hotspot camp-tone-' + h.id + (onRoute ? " on-route" : "") + '" data-camp="' + h.id + '" style="left:' + h.x + '%; top:' + h.y + '%;" aria-label="' + (c ? esc(c.name) : h.id) + '"></button>';
+    }).join("");
+    return '<div class="rift-photo-wrap">'
+      + '<img src="' + MAP_IMG + '" alt="Mapa da Summoner\u0027s Rift com os camps de jungle" class="rift-photo-img" onerror="window.__riftMapFallback(this);">'
+      + hotspots
+      + '</div>';
+  }
+
   const jungleMapRoot = document.getElementById("jungleMapRoot");
   let activePath = 0;
   function renderJungleMap(){
@@ -417,7 +457,7 @@
         + '</button>';
     }).join("");
     jungleMapRoot.innerHTML =
-      '<div class="rift-schematic">' + riftSvg(path) + '</div>'
+      '<div class="rift-schematic">' + riftPhotoMap(path) + '</div>'
       + '<div class="combo-tab-row" style="margin-top:22px;">' + pathTabs + '</div>'
       + '<p class="phase-intro" style="margin-top:14px;">' + path.desc + '</p>'
       + '<div class="jungle-route">' + routeHtml + '</div>'
@@ -583,7 +623,7 @@
   jungleMapRoot.addEventListener("click", function(e){
     const pathBtn = e.target.closest("[data-path]");
     if(pathBtn){ activePath = parseInt(pathBtn.dataset.path, 10); renderJungleMap(); return; }
-    const campBtn = e.target.closest(".camp-card, .rift-marker");
+    const campBtn = e.target.closest(".camp-card, .rift-marker, .rift-hotspot");
     if(campBtn){ showCampDetail(campBtn.dataset.camp); }
   });
   renderJungleMap();
