@@ -451,10 +451,37 @@
     {x:205,y:284,r:4},{x:255,y:178,r:5},{x:162,y:58,r:4},{x:232,y:118,r:4.5},{x:40,y:98,r:4},
     {x:20,y:240,r:4},{x:288,y:120,r:4},{x:150,y:290,r:4},{x:290,y:200,r:4}
   ];
+  const LANE_TURRETS = [
+    {x:112.8,y:207.2,tone:"blue"},{x:183.6,y:136.4,tone:"red"},
+    {x:61.8,y:132.6,tone:"blue"},{x:149.2,y:54.8,tone:"red"},
+    {x:187.4,y:258.2,tone:"blue"},{x:265.2,y:170.8,tone:"red"}
+  ];
+  function turretSvg(t){
+    const col = t.tone === "blue" ? "#3E7FB8" : "#B84A4A";
+    return '<g transform="translate(' + t.x + ',' + t.y + ')" class="rift-turret">'
+      + '<rect x="-6" y="-6" width="12" height="14" rx="2" fill="#2A2620" stroke="' + col + '" stroke-width="1.4"></rect>'
+      + '<circle cy="-8" r="3.4" fill="' + col + '"></circle>'
+      + '</g>';
+  }
+  function bushSvg(x,y,r){
+    return '<g transform="translate(' + x + ',' + y + ')" class="rift-foliage">'
+      + '<ellipse cx="-' + r*0.5 + '" cy="2" rx="' + r*0.7 + '" ry="' + r*0.55 + '"></ellipse>'
+      + '<ellipse cx="' + r*0.5 + '" cy="2" rx="' + r*0.7 + '" ry="' + r*0.55 + '"></ellipse>'
+      + '<ellipse cx="0" cy="-2" rx="' + r*0.75 + '" ry="' + r*0.6 + '"></ellipse>'
+      + '</g>';
+  }
+  function baseSvg(p, tone){
+    const col = tone === "blue" ? "#3E7FB8" : "#B84A4A";
+    return '<g transform="translate(' + p.x + ',' + p.y + ')">'
+      + '<circle r="30" fill="' + col + '" opacity=".14"></circle>'
+      + turretSvg({x:-24,y:10,tone:tone}) + turretSvg({x:24,y:-10,tone:tone})
+      + '</g>';
+  }
   function riftSvg(path){
     const routePts = path.route.map(function(id){ return CAMP_POS[id]; }).filter(Boolean);
     const routeD = routePts.length ? routePts.map(function(p,i){ return (i===0?"M":"L") + p.x + "," + p.y; }).join(" ") : "";
-    const foliage = FOLIAGE.map(function(f){ return '<circle cx="' + f.x + '" cy="' + f.y + '" r="' + f.r + '" class="rift-foliage"></circle>'; }).join("");
+    const foliage = FOLIAGE.map(function(f){ return bushSvg(f.x, f.y, f.r*1.8); }).join("");
+    const turrets = LANE_TURRETS.map(turretSvg).join("");
     const markers = Object.keys(CAMP_POS).map(function(id){
       const p = CAMP_POS[id];
       const onRoute = path.route.indexOf(id) !== -1;
@@ -469,6 +496,12 @@
       + '<rect width="18" height="18" fill="#2C4A2C"></rect>'
       + '<path d="M0 9h18M9 0v18" stroke="#33532F" stroke-width="1" opacity=".5"></path>'
       + '</pattern>'
+      /* "parede" de moita entalhada, tipo labirinto — pra imitar a textura do mapa oficial */
+      + '<pattern id="riftHedge" width="46" height="46" patternUnits="userSpaceOnUse">'
+      + '<rect width="46" height="46" fill="none"></rect>'
+      + '<path d="M0 23a23 23 0 0 1 23-23a23 23 0 0 1 23 23a23 23 0 0 1-23 23a23 23 0 0 1-23-23z" fill="none" stroke="#1F3B2E" stroke-width="7" opacity=".55"></path>'
+      + '<path d="M0 23a23 23 0 0 1 23-23a23 23 0 0 1 23 23a23 23 0 0 1-23 23a23 23 0 0 1-23-23z" fill="none" stroke="#2E5643" stroke-width="2.4" opacity=".6"></path>'
+      + '</pattern>'
       + '<radialGradient id="riftGlowBlue" cx="50%" cy="50%" r="50%">'
       + '<stop offset="0%" stop-color="#5B9BD5" stop-opacity=".55"></stop>'
       + '<stop offset="100%" stop-color="#5B9BD5" stop-opacity="0"></stop>'
@@ -477,23 +510,34 @@
       + '<stop offset="0%" stop-color="#C1495A" stop-opacity=".55"></stop>'
       + '<stop offset="100%" stop-color="#C1495A" stop-opacity="0"></stop>'
       + '</radialGradient>'
+      + '<linearGradient id="riftRiverFill" x1="0" y1="0" x2="1" y2="1">'
+      + '<stop offset="0%" stop-color="#3E8FA6"></stop><stop offset="100%" stop-color="#2A6E86"></stop>'
+      + '</linearGradient>'
       + '</defs>'
-      /* piso de grama/pedra + moldura */
+      /* piso: grama + camada de moita entalhada por cima, igual ao print oficial */
       + '<rect x="4" y="4" width="312" height="312" rx="22" fill="url(#riftGrass)"></rect>'
+      + '<rect x="4" y="4" width="312" height="312" rx="22" fill="url(#riftHedge)" opacity=".9"></rect>'
       + '<rect x="4" y="4" width="312" height="312" rx="22" class="rift-outline"></rect>'
       /* clarão azul no canto da base azul, vermelho no canto oposto */
-      + '<circle cx="30" cy="290" r="110" fill="url(#riftGlowBlue)"></circle>'
-      + '<circle cx="290" cy="30" r="110" fill="url(#riftGlowRed)"></circle>'
-      /* moitas */
-      + foliage
-      /* três rotas: lane de cima (arco perto do topo-esquerda), lane do meio (reta) e lane de baixo (arco perto do canto inferior-direito) */
+      + '<circle cx="30" cy="290" r="120" fill="url(#riftGlowBlue)"></circle>'
+      + '<circle cx="290" cy="30" r="120" fill="url(#riftGlowRed)"></circle>'
+      /* três rotas: lane de cima, lane do meio (reta) e lane de baixo — "asfaltadas" (faixa larga clara) */
       + '<path d="M' + NEXUS_BLUE.x + ',' + NEXUS_BLUE.y + ' Q22,22 ' + NEXUS_RED.x + ',' + NEXUS_RED.y + '" class="rift-lane"></path>'
       + '<path d="M' + NEXUS_BLUE.x + ',' + NEXUS_BLUE.y + ' L' + NEXUS_RED.x + ',' + NEXUS_RED.y + '" class="rift-lane rift-lane-mid"></path>'
       + '<path d="M' + NEXUS_BLUE.x + ',' + NEXUS_BLUE.y + ' Q298,298 ' + NEXUS_RED.x + ',' + NEXUS_RED.y + '" class="rift-lane"></path>'
-      /* rio na diagonal contrária, com os dois pits de objetivo */
-      + '<path d="M8,150 Q160,175 312,190" class="rift-river"></path>'
+      /* rio em faixa (não só linha), com ponte de pedra e espuma nas bordas */
+      + '<path d="M4,140 Q160,168 316,182 L316,198 Q160,184 4,156 Z" fill="url(#riftRiverFill)" opacity=".92"></path>'
+      + '<path d="M4,140 Q160,168 316,182" class="rift-river-edge"></path>'
+      + '<path d="M4,156 Q160,184 316,198" class="rift-river-edge" opacity=".5"></path>'
+      + '<rect x="146" y="150" width="26" height="42" rx="3" transform="rotate(18 159 171)" fill="#8A7A62" stroke="#5A4E3C" stroke-width="1.5"></rect>'
       + '<ellipse cx="' + BARON_PIT.x + '" cy="' + BARON_PIT.y + '" rx="32" ry="24" class="rift-pit rift-pit-void"></ellipse>'
       + '<ellipse cx="' + DRAGON_PIT.x + '" cy="' + DRAGON_PIT.y + '" rx="30" ry="24" class="rift-pit rift-pit-fire"></ellipse>'
+      /* torres nas lanes */
+      + turrets
+      /* bases com torres flanqueando o nexus */
+      + baseSvg(NEXUS_BLUE, "blue") + baseSvg(NEXUS_RED, "red")
+      /* moitas (agrupamentos de folhas, não só bolinhas) */
+      + foliage
       /* nexus */
       + '<g transform="translate(' + NEXUS_BLUE.x + ',' + NEXUS_BLUE.y + ')"><path d="M0-13 L11 0 0 13 -11 0z" class="rift-nexus rift-nexus-blue"></path></g>'
       + '<g transform="translate(' + NEXUS_RED.x + ',' + NEXUS_RED.y + ')"><path d="M0-13 L11 0 0 13 -11 0z" class="rift-nexus rift-nexus-red"></path></g>'
