@@ -753,6 +753,19 @@ img.img-fallback{object-fit:contain !important; padding:22%; opacity:.55; backgr
 
 /* ============ MAPA DA JUNGLE — ESQUEMA SVG ============ */
 .rift-schematic{background:linear-gradient(160deg, var(--wine-900), var(--wine-800)); border-radius:var(--radius-lg); padding:18px; margin-top:20px;}
+/* ---- mapa = imagem real + pontos clicáveis ---- */
+.rift-photo-wrap{position:relative; width:100%; border-radius:var(--radius-sm); overflow:hidden; line-height:0;}
+.rift-photo-img{width:100%; height:auto; display:block;}
+.rift-hotspot{
+  position:absolute; width:9%; aspect-ratio:1/1; max-width:46px; min-width:26px;
+  transform:translate(-50%,-50%); border-radius:50%; cursor:pointer;
+  background:rgba(255,255,255,.02); border:2px solid rgba(255,255,255,.5);
+  box-shadow:0 0 0 3px rgba(0,0,0,.15); transition:transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+}
+.rift-hotspot:hover, .rift-hotspot:focus-visible{transform:translate(-50%,-50%) scale(1.12); border-color:#fff; outline:none;}
+.rift-hotspot.on-route{border-color:var(--gold-300); box-shadow:0 0 0 4px rgba(227,194,117,.35), 0 0 14px rgba(227,194,117,.6); animation:hotspotPulse 1.8s ease-in-out infinite;}
+@keyframes hotspotPulse{0%,100%{box-shadow:0 0 0 4px rgba(227,194,117,.35), 0 0 14px rgba(227,194,117,.6);} 50%{box-shadow:0 0 0 7px rgba(227,194,117,.2), 0 0 20px rgba(227,194,117,.85);}}
+@media (max-width:600px){ .rift-hotspot{min-width:20px;} }
 .rift-svg{width:100%; height:auto; max-height:460px; display:block; margin:0 auto;}
 .rift-outline{fill:none; stroke:rgba(255,255,255,.3); stroke-width:1.5;}
 .rift-side{opacity:.55;}
