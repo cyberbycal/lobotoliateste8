@@ -438,13 +438,22 @@
      diagonal, Arauto no pit de cima e Dragão no pit de baixo. */
   const NEXUS_BLUE = {x:42,y:278};
   const NEXUS_RED = {x:278,y:42};
-  const BARON_PIT = {x:132,y:96};
-  const DRAGON_PIT = {x:222,y:206};
+  const BARON_PIT = {x:118,y:92};
+  const DRAGON_PIT = {x:212,y:222};
+  /* Layout batido com o mapa oficial (imagens de referência): perto da
+     base cada time tem duas trincas — Sentinela Azul+Gromp+Lobos de um
+     lado, e Brutamontes Vermelho+Krugs+Aves-navalha do outro, essa
+     última sempre coladinha no pit do Arauto/Barão ou no do Dragão. */
   const CAMP_POS = {
-    blue:{x:98,y:222}, gromp:{x:48,y:158}, wolves:{x:142,y:202}, raptors:{x:96,y:118},
-    red:{x:182,y:246}, krugs:{x:58,y:226}, scuttle:{x:192,y:228}, dragon:{x:DRAGON_PIT.x,y:DRAGON_PIT.y},
-    herald:{x:BARON_PIT.x,y:BARON_PIT.y}, grubs:{x:66,y:266}
+    blue:{x:100,y:205}, gromp:{x:50,y:155}, wolves:{x:140,y:195}, raptors:{x:100,y:145},
+    red:{x:150,y:115}, krugs:{x:75,y:100}, scuttle:{x:196,y:238}, dragon:{x:DRAGON_PIT.x,y:DRAGON_PIT.y},
+    herald:{x:BARON_PIT.x,y:BARON_PIT.y}, grubs:{x:64,y:268}
   };
+  /* Essas 6 existem nos dois lados do mapa (o adversário tem a mesma
+     trinca espelhada) — geradas automaticamente por simetria de 180°,
+     igual às imagens que a Júlia mandou. */
+  const MIRRORED_CAMPS = ["blue","gromp","wolves","red","krugs","raptors"];
+  function mirrorPoint(p){ return {x:320-p.x, y:320-p.y}; }
   /* Moitas decorativas, só estética (não clicáveis). */
   const FOLIAGE = [
     {x:70,y:258,r:5},{x:33,y:198,r:4.2},{x:78,y:96,r:4.5},{x:172,y:150,r:4},{x:112,y:270,r:5},
@@ -488,6 +497,15 @@
       return '<g class="rift-marker camp-tone-' + id + (onRoute?' on-route':'') + '" data-camp="' + id + '" transform="translate(' + p.x + ',' + p.y + ')" role="button" tabindex="0">'
         + '<circle r="15.5" class="rift-marker-bg"></circle>'
         + '<foreignObject x="-12" y="-12" width="24" height="24">' + campIconSvg(id, 24) + '</foreignObject>'
+        + '</g>';
+    }).join("");
+    /* Versão espelhada no lado adversário — mesmo camp, é o "irmão"
+       dele do outro lado do mapa (clicar mostra a mesma explicação). */
+    const mirroredMarkers = MIRRORED_CAMPS.map(function(id){
+      const p = mirrorPoint(CAMP_POS[id]);
+      return '<g class="rift-marker rift-marker-enemy camp-tone-' + id + '" data-camp="' + id + '" transform="translate(' + p.x + ',' + p.y + ')" role="button" tabindex="0">'
+        + '<circle r="13.5" class="rift-marker-bg"></circle>'
+        + '<foreignObject x="-10.5" y="-10.5" width="21" height="21">' + campIconSvg(id, 21) + '</foreignObject>'
         + '</g>';
     }).join("");
     return '<svg viewBox="0 0 320 320" class="rift-svg" xmlns="http://www.w3.org/2000/svg">'
@@ -542,6 +560,7 @@
       + '<g transform="translate(' + NEXUS_BLUE.x + ',' + NEXUS_BLUE.y + ')"><path d="M0-13 L11 0 0 13 -11 0z" class="rift-nexus rift-nexus-blue"></path></g>'
       + '<g transform="translate(' + NEXUS_RED.x + ',' + NEXUS_RED.y + ')"><path d="M0-13 L11 0 0 13 -11 0z" class="rift-nexus rift-nexus-red"></path></g>'
       + (routeD ? '<path d="' + routeD + '" class="rift-route"></path>' : '')
+      + mirroredMarkers
       + markers
       + '</svg>';
   }
