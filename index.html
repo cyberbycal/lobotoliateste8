@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>guia para minha lobotolinda ♡</title>
+<meta name="description" content="Um presente digital para a Júlia: pedido de desculpas + guia completo de Nidalee jungle.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --cream:#FBF4EC;
+  --cream-2:#F7EAE1;
+  --rose-50:#FCEAF1;
+  --rose-100:#F7D6E4;
+  --rose-200:#F0BBD4;
+  --rose-300:#E79CC0;
+  --rose-400:#DD7FAB;
+  --rose-500:#CE5D8F;
+  --rose-600:#B14372;
+  --wine-700:#6E2A46;
+  --wine-800:#511E35;
+  --wine-900:#341326;
+  --gold-500:#C79A3B;
+  --gold-300:#E3C275;
+  --red-500:#AE3B45;
+  --ink:#3B2430;
+  --ink-soft:#6B4A58;
+  --line:#EAD3DD;
+  --shadow-sm:0 2px 10px rgba(110,42,70,.08);
+  --shadow-md:0 10px 30px rgba(110,42,70,.12);
+  --radius-lg:26px;
+  --radius-md:18px;
+  --radius-sm:12px;
+  --serif:'Fraunces', serif;
+  --sans:'Manrope', sans-serif;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important;}
+}
+body{
+  margin:0;
+  font-family:var(--sans);
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:var(--serif); color:var(--wine-800); margin:0 0 .4em; font-weight:600; letter-spacing:-.01em;}
+p{margin:0 0 1em;}
+a{color:inherit;}
+button{font-family:inherit;}
+img{max-width:100%; display:block;}
+.visually-hidden{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap;}
+:focus-visible{outline:3px solid var(--gold-500); outline-offset:3px; border-radius:4px;}
+
+/* ============ DECORATIVE / SHARED ============ */
+.wrap{max-width:760px; margin:0 auto; padding:0 24px;}
+.wrap-wide{max-width:1100px; margin:0 auto; padding:0 24px;}
+.eyebrow{font-family:var(--sans); font-weight:700; color:var(--rose-500); font-size:.8rem; letter-spacing:.02em; margin-bottom:.6em;}
+.section{padding:96px 0; position:relative;}
+.section-tight{padding:64px 0;}
+.divider{display:flex; align-items:center; justify-content:center; gap:14px; margin:8px 0 40px; opacity:.65;}
+.divider svg{width:26px; height:26px; color:var(--rose-400);}
+.divider .stem{height:1px; width:64px; background:linear-gradient(90deg, transparent, var(--rose-300), transparent);}
+
+.heart-particles{position:fixed; inset:0; pointer-events:none; z-index:2; overflow:hidden;}
+.floaty{position:absolute; opacity:0; animation:floatUp linear forwards;}
+@keyframes floatUp{
+  0%{opacity:0; transform:translateY(0) rotate(0deg);}
+  10%{opacity:.55;}
+  90%{opacity:.35;}
+  100%{opacity:0; transform:translateY(-120vh) rotate(40deg);}
+}
+
+.btn{
+  display:inline-flex; align-items:center; gap:10px;
+  background:linear-gradient(135deg, var(--rose-500), var(--rose-600));
+  color:#fff; border:none; padding:14px 26px; border-radius:100px;
+  font-weight:700; font-size:.98rem; cursor:pointer; box-shadow:var(--shadow-sm);
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.btn:hover{transform:translateY(-2px); box-shadow:var(--shadow-md);}
+.btn:active{transform:translateY(0);}
+.btn-ghost{
+  background:transparent; color:var(--wine-700); border:1.5px solid var(--rose-300);
+  box-shadow:none;
+}
+.btn-ghost:hover{background:var(--rose-50);}
+.btn-sm{padding:9px 16px; font-size:.85rem; border-radius:100px;}
+
+.card{
+  background:#fff; border-radius:var(--radius-md); padding:26px;
+  box-shadow:var(--shadow-sm); border:1px solid var(--line);
+}
+.tag{display:inline-block; font-size:.72rem; font-weight:700; padding:4px 11px; border-radius:100px; background:var(--rose-50); color:var(--rose-600); letter-spacing:.02em;}
+.tag-gold{background:#FBF1DC; color:#8A6A1C;}
+.tag-red{background:#FBE6E6; color:var(--red-500);}
+
+::selection{background:var(--rose-200); color:var(--wine-900);}
+
+/* ============ GATE SCREEN — estética main-Nidalee / tailandesa ============
+   Item 5 do briefing: tigres, dourado, rosa, ornamentos tipo "kanok"
+   tailandês, em vez do fundo liso de antes. */
+#gate{
+  position:fixed; inset:0; z-index:100;
+  display:flex; align-items:center; justify-content:center; flex-direction:column;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(231,156,192,.4), transparent 42%),
+    radial-gradient(circle at 88% 85%, rgba(199,154,59,.28), transparent 45%),
+    radial-gradient(circle at 50% 100%, rgba(206,93,143,.25), transparent 55%),
+    linear-gradient(160deg, #341326, #5A1E3A 45%, #7A2A46 75%, #4A1E33);
+  text-align:center; padding:32px; transition:opacity .9s ease, visibility .9s ease; overflow:hidden;
+}
+#gate.gate-hidden{opacity:0; visibility:hidden; pointer-events:none;}
+.gate-lily{position:absolute; opacity:.16; color:var(--rose-200);}
+.gate-stripes{position:absolute; inset:0; opacity:.05; pointer-events:none;
+  background-image:repeating-linear-gradient(35deg, #000 0 10px, transparent 10px 46px);}
+.gate-tiger{position:absolute; opacity:.16; color:var(--gold-300); pointer-events:none;}
+.gate-tiger-left{width:220px; height:220px; bottom:-30px; left:-30px; transform:scaleX(-1);}
+.gate-tiger-right{width:180px; height:180px; top:-20px; right:-30px;}
+.gate-kanok{position:absolute; width:120px; height:120px; opacity:.5; color:var(--gold-300); pointer-events:none;}
+.gate-kanok-tl{top:18px; left:18px;}
+.gate-kanok-tr{top:18px; right:18px; transform:scaleX(-1);}
+.gate-kanok-bl{bottom:18px; left:18px; transform:scaleY(-1);}
+.gate-kanok-br{bottom:18px; right:18px; transform:scale(-1,-1);}
+@media (max-width:640px){ .gate-kanok{width:70px; height:70px;} .gate-tiger-left{width:140px;height:140px;} .gate-tiger-right{width:110px;height:110px;} }
+.gate-eyebrow{
+  font-family:var(--sans); color:var(--rose-200); font-weight:600;
+  font-size:.85rem; letter-spacing:.04em; margin-bottom:22px; opacity:.85;
+  position:relative; z-index:2;
+}
+.gate-heart-btn{
+  background:radial-gradient(circle at 32% 30%, var(--rose-300), var(--rose-600) 70%);
+  border:3px solid var(--gold-300); color:#fff; width:200px; height:200px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center; cursor:pointer;
+  box-shadow:0 0 0 10px rgba(227,194,117,.14), 0 20px 60px rgba(0,0,0,.35);
+  animation:pulse 2.6s ease-in-out infinite;
+  position:relative; z-index:2;
+}
+.gate-heart-btn::before{
+  content:''; position:absolute; inset:-14px; border-radius:50%; z-index:-1;
+  border:1.5px dashed rgba(227,194,117,.5);
+}
+.gate-heart-btn svg{width:74px; height:74px;}
+@keyframes pulse{
+  0%,100%{transform:scale(1); box-shadow:0 0 0 10px rgba(227,194,117,.14), 0 20px 60px rgba(0,0,0,.35);}
+  50%{transform:scale(1.045); box-shadow:0 0 0 16px rgba(227,194,117,.2), 0 24px 70px rgba(0,0,0,.4);}
+}
+.gate-heart-btn:hover{animation-play-state:paused; transform:scale(1.06);}
+.gate-btn-label{
+  font-family:var(--serif); font-size:1.5rem; color:#fff; margin-top:28px; font-weight:600;
+  max-width:360px; position:relative; z-index:2;
+}
+.gate-sub{
+  font-family:var(--sans); color:var(--rose-100); opacity:.8; font-size:.92rem;
+  max-width:380px; margin-top:16px; line-height:1.6; position:relative; z-index:2;
+}
+@media (max-width:480px){
+  .gate-heart-btn{width:160px; height:160px;}
+  .gate-heart-btn svg{width:58px; height:58px;}
+  .gate-btn-label{font-size:1.25rem;}
+}
+
+/* ============ NAV ============ */
+#nav{
+  position:fixed; top:0; left:0; right:0; z-index:50;
+  display:flex; align-items:center; justify-content:center;
+  padding:14px 20px; transform:translateY(-120%); transition:transform .5s ease, background .3s ease;
+}
+#nav.nav-visible{transform:translateY(0);}
+#nav.nav-solid{background:rgba(251,244,236,.88); backdrop-filter:blur(10px); box-shadow:0 2px 16px rgba(110,42,70,.08);}
+.nav-inner{display:flex; align-items:center; gap:4px; max-width:1100px; width:100%; justify-content:center; flex-wrap:wrap;}
+.nav-link{
+  font-size:.82rem; font-weight:700; color:var(--wine-700); text-decoration:none;
+  padding:8px 12px; border-radius:100px; white-space:nowrap; transition:background .2s ease, color .2s ease;
+}
+.nav-link:hover{background:var(--rose-100); color:var(--rose-600);}
+.nav-hamburger{display:none;}
+@media (max-width:880px){
+  .nav-inner{display:none;}
+  #nav{justify-content:space-between; padding:12px 18px;}
+  #nav.nav-visible{background:rgba(251,244,236,.94); backdrop-filter:blur(10px);}
+  .nav-hamburger{
+    display:flex; margin-left:auto; background:var(--rose-500); border:none; color:#fff;
+    width:42px; height:42px; border-radius:50%; align-items:center; justify-content:center; cursor:pointer;
+  }
+  .nav-brand{font-family:var(--serif); font-weight:600; color:var(--wine-700); font-size:1rem;}
+  .nav-inner.mobile-open{
+    display:flex; position:absolute; top:60px; left:12px; right:12px; background:#fff;
+    border-radius:18px; box-shadow:var(--shadow-md); flex-direction:column; padding:10px; gap:2px;
+  }
+  .nav-inner.mobile-open .nav-link{width:100%; padding:12px 14px;}
+}
+
+/* ============ SECTION: DESCULPAS ============ */
+#desculpas{padding-top:130px;}
+.apology-title{font-size:clamp(2rem, 5vw, 2.9rem); line-height:1.15;}
+.apology-body{font-size:1.08rem; color:var(--ink-soft);}
+.apology-note{
+  margin-top:28px; padding:20px 24px; border-radius:var(--radius-md);
+  background:var(--rose-50); border:1px solid var(--rose-100); font-family:var(--serif);
+  font-style:italic; font-size:1.05rem; color:var(--wine-700); position:relative;
+}
+.heart-pop{position:absolute; right:18px; top:-14px; color:var(--rose-400); width:28px; height:28px; animation:heartPop 1s ease;}
+@keyframes heartPop{0%{transform:scale(0) rotate(-15deg); opacity:0;} 60%{transform:scale(1.2) rotate(6deg); opacity:1;} 100%{transform:scale(1) rotate(0); opacity:1;}}
+
+/* ============ MISSION ============ */
+.mission-card{
+  background:linear-gradient(155deg, var(--wine-800), var(--wine-900));
+  border-radius:var(--radius-lg); padding:38px clamp(20px,5vw,44px); color:#fff; position:relative; overflow:hidden;
+}
+.mission-card::before{
+  content:''; position:absolute; inset:0; opacity:.14;
+  background:radial-gradient(circle at 85% 10%, var(--gold-300), transparent 40%), radial-gradient(circle at 5% 90%, var(--rose-300), transparent 40%);
+}
+.mission-row{display:flex; gap:28px; flex-wrap:wrap; margin:26px 0; position:relative;}
+.mission-col{flex:1; min-width:220px;}
+.mission-col h4{color:var(--gold-300); font-size:.8rem; text-transform:none; letter-spacing:.03em; font-family:var(--sans); font-weight:800;}
+.mission-col p{color:rgba(255,255,255,.88); margin:0; font-size:.98rem;}
+.progress-outer{
+  position:relative; height:16px; border-radius:100px; background:rgba(255,255,255,.14); overflow:hidden; margin-top:10px;
+}
+.progress-inner{
+  height:100%; border-radius:100px; background:linear-gradient(90deg, var(--rose-400), var(--gold-300)); width:0%;
+  transition:width .6s ease;
+}
+.progress-label{margin-top:12px; font-size:.92rem; color:var(--rose-100); font-weight:700; position:relative;}
+.progress-milestones{display:flex; justify-content:space-between; font-size:.68rem; color:rgba(255,255,255,.55); margin-top:6px;}
+
+/* ============ ROADMAP PHASES ============ */
+.phase-head{display:flex; align-items:baseline; gap:14px; margin-bottom:6px; flex-wrap:wrap;}
+.phase-num{font-family:var(--serif); font-size:.85rem; color:var(--rose-500); font-weight:700;}
+.phase-intro{color:var(--ink-soft); max-width:640px;}
+.glossary-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(240px,1fr)); gap:14px; margin-top:28px;}
+.gloss-item{
+  background:#fff; border:1px solid var(--line); border-radius:var(--radius-sm); padding:16px 18px;
+}
+.gloss-item dt{font-weight:800; color:var(--wine-700); font-size:.94rem; margin-bottom:4px; font-family:var(--sans);}
+.gloss-item dd{margin:0; color:var(--ink-soft); font-size:.88rem;}
+
+.tip-list{list-style:none; margin:26px 0 0; padding:0; display:grid; gap:12px;}
+.tip-list li{
+  display:flex; gap:12px; align-items:flex-start; background:#fff; border:1px solid var(--line);
+  border-radius:var(--radius-sm); padding:14px 16px; font-size:.94rem;
+}
+.tip-list li svg{flex-shrink:0; width:18px; height:18px; color:var(--rose-500); margin-top:2px;}
+
+.ability-grid{display:grid; gap:16px; margin-top:28px;}
+.ability-card{
+  display:grid; grid-template-columns:64px 1fr; gap:16px; background:#fff; border:1px solid var(--line);
+  border-radius:var(--radius-md); padding:20px; align-items:start;
+}
+.ability-icon{
+  width:60px; height:60px; border-radius:16px; display:flex; align-items:center; justify-content:center;
+  background:linear-gradient(135deg, var(--rose-100), var(--rose-300)); color:var(--wine-800); font-family:var(--serif);
+  font-weight:700; font-size:1.3rem;
+}
+.ability-card h4{margin:0 0 2px; font-size:1.05rem;}
+.ability-meta{font-size:.78rem; color:var(--rose-500); font-weight:700; margin-bottom:8px;}
+.ability-grid-inner{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px;}
+@media (max-width:560px){.ability-grid-inner{grid-template-columns:1fr;}}
+.ability-box{background:var(--cream-2); border-radius:10px; padding:10px 12px; font-size:.85rem;}
+.ability-box b{display:block; font-size:.72rem; text-transform:uppercase; letter-spacing:.03em; color:var(--rose-600); margin-bottom:3px;}
+
+.combo-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px; margin-top:28px;}
+.combo-card{background:#fff; border:1px solid var(--line); border-radius:var(--radius-md); padding:22px;}
+.combo-seq{display:flex; flex-wrap:wrap; gap:8px; margin:14px 0; align-items:center;}
+.combo-step{
+  background:var(--wine-800); color:#fff; font-weight:700; font-size:.82rem; padding:6px 12px; border-radius:8px;
+}
+.combo-arrow{color:var(--rose-400);}
+.combo-diff{display:flex; gap:4px; margin-bottom:10px;}
+.dot{width:8px; height:8px; border-radius:50%; background:var(--line);}
+.dot.on{background:var(--rose-500);}
+
+/* ============ TRAINING ROADMAP ============ */
+.week-block{margin-top:34px;}
+.week-title{font-family:var(--serif); font-size:1.2rem; color:var(--wine-700); margin-bottom:14px;}
+.day-list{display:grid; gap:10px;}
+.day-item{
+  display:flex; align-items:flex-start; gap:14px; background:#fff; border:1px solid var(--line);
+  border-radius:var(--radius-sm); padding:14px 16px; transition:background .2s ease, opacity .2s ease;
+}
+.day-item.done{background:var(--rose-50); border-color:var(--rose-200);}
+.day-checkbox{
+  appearance:none; width:22px; height:22px; border-radius:7px; border:2px solid var(--rose-300);
+  flex-shrink:0; margin-top:2px; cursor:pointer; position:relative; background:#fff;
+}
+.day-checkbox:checked{background:var(--rose-500); border-color:var(--rose-500);}
+.day-checkbox:checked::after{
+  content:''; position:absolute; left:6px; top:2px; width:6px; height:11px;
+  border:solid #fff; border-width:0 2.5px 2.5px 0; transform:rotate(45deg);
+}
+.day-text b{display:block; color:var(--wine-700); font-size:.94rem; margin-bottom:2px;}
+.day-text span{font-size:.85rem; color:var(--ink-soft);}
+.day-item.done .day-text b{text-decoration:line-through; text-decoration-color:var(--rose-300);}
+
+/* ============ VIDEOS ============ */
+.video-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px; margin-top:28px;}
+.video-card{background:#fff; border:1px solid var(--line); border-radius:var(--radius-md); overflow:hidden; display:flex; flex-direction:column;}
+.video-thumb{
+  aspect-ratio:16/9; background:linear-gradient(135deg, var(--rose-200), var(--rose-400));
+  display:flex; align-items:center; justify-content:center; color:#fff; position:relative;
+}
+.video-thumb svg{width:44px; height:44px; opacity:.9;}
+.video-body{padding:16px 18px; display:flex; flex-direction:column; gap:8px; flex:1;}
+.video-body h4{font-size:.98rem; margin:0;}
+.video-meta{display:flex; gap:6px; flex-wrap:wrap;}
+.video-body p{font-size:.85rem; color:var(--ink-soft); margin:0; flex:1;}
+
+/* ============ MATCHUPS ============ */
+.matchup-search{position:relative; margin-top:26px; max-width:420px;}
+.matchup-search input{
+  width:100%; padding:14px 18px; border-radius:100px; border:1.5px solid var(--rose-200);
+  font-size:1rem; font-family:var(--sans); background:#fff;
+}
+.matchup-search input:focus{border-color:var(--rose-400);}
+.matchup-list{
+  list-style:none; margin:8px 0 0; padding:0; position:absolute; background:#fff; width:100%;
+  border-radius:var(--radius-sm); box-shadow:var(--shadow-md); max-height:280px; overflow-y:auto; z-index:5;
+  border:1px solid var(--line); display:none;
+}
+.matchup-list.open{display:block;}
+.matchup-list li button{
+  width:100%; text-align:left; padding:12px 18px; background:none; border:none; cursor:pointer; font-size:.95rem;
+  font-weight:600; color:var(--wine-700);
+}
+.matchup-list li button:hover{background:var(--rose-50);}
+.matchup-chip-row{display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;}
+.matchup-chip{
+  border:1px solid var(--rose-200); background:#fff; padding:7px 14px; border-radius:100px; font-size:.82rem;
+  font-weight:700; color:var(--wine-700); cursor:pointer;
+}
+.matchup-chip:hover{background:var(--rose-100);}
+
+.matchup-panel{
+  margin-top:32px; background:#fff; border:1px solid var(--line); border-radius:var(--radius-lg);
+  padding:clamp(20px,4vw,36px); display:none;
+}
+.matchup-panel.show{display:block; animation:fadeUp .5s ease;}
+@keyframes fadeUp{from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);}}
+.matchup-header{display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:18px;}
+.matchup-title{font-size:1.4rem; margin:0;}
+.danger-badge{font-weight:800; font-size:.85rem; padding:8px 16px; border-radius:100px;}
+.danger-alto{background:#FBE6E6; color:var(--red-500);}
+.danger-medio{background:#FBF1DC; color:#8A6A1C;}
+.danger-baixo{background:#E7F5EA; color:#357A47;}
+.matchup-grid{display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:20px;}
+@media (max-width:680px){.matchup-grid{grid-template-columns:1fr;}}
+.matchup-block h5{font-family:var(--sans); font-weight:800; font-size:.78rem; text-transform:uppercase; letter-spacing:.03em; color:var(--rose-600); margin:0 0 10px;}
+.rune-line{font-size:.92rem; margin-bottom:4px;}
+.rune-line b{color:var(--wine-700);}
+.matchup-block ul{margin:0; padding-left:18px; font-size:.92rem; color:var(--ink-soft);}
+.matchup-block ul li{margin-bottom:6px;}
+.mistake-box{
+  margin-top:20px; background:var(--rose-50); border:1px solid var(--rose-100); border-radius:var(--radius-sm);
+  padding:16px 18px; font-size:.92rem;
+}
+.mistake-box b{color:var(--red-500);}
+.patch-note{font-size:.78rem; color:var(--ink-soft); opacity:.75; margin-top:18px;}
+
+/* ============ ANTI-TILT ============ */
+.antitilt-card{
+  background:linear-gradient(155deg, var(--rose-500), var(--rose-600)); color:#fff;
+  border-radius:var(--radius-lg); padding:clamp(24px,5vw,44px);
+}
+.antitilt-steps{counter-reset:step; list-style:none; padding:0; margin:22px 0 0; display:grid; gap:12px;}
+.antitilt-steps li{
+  counter-increment:step; display:flex; gap:14px; align-items:flex-start; background:rgba(255,255,255,.13);
+  border-radius:var(--radius-sm); padding:14px 16px; font-size:.98rem;
+}
+.antitilt-steps li::before{
+  content:counter(step); flex-shrink:0; width:26px; height:26px; border-radius:50%; background:#fff;
+  color:var(--rose-600); font-weight:800; font-size:.8rem; display:flex; align-items:center; justify-content:center;
+}
+.antitilt-footer{
+  margin-top:22px; background:rgba(255,255,255,.16); border-radius:var(--radius-sm); padding:16px 18px; font-weight:700;
+}
+
+/* ============ CHEAT SHEET ============ */
+.cheat-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px; margin-top:26px;}
+.cheat-card{background:#fff; border:1px solid var(--line); border-radius:var(--radius-md); padding:20px;}
+.cheat-card h4{font-size:.85rem; text-transform:uppercase; letter-spacing:.03em; color:var(--rose-600); margin-bottom:12px;}
+.cheat-card ul{list-style:none; margin:0; padding:0; display:grid; gap:8px;}
+.cheat-card li{display:flex; align-items:center; gap:10px; font-size:.9rem; color:var(--ink-soft);}
+.cheat-check{width:16px; height:16px; border:2px solid var(--rose-300); border-radius:5px; flex-shrink:0;}
+
+/* ============ DICAS ============ */
+.dicas-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px; margin-top:30px;}
+.dica-card{
+  background:var(--rose-50); border:1px solid var(--rose-100); border-radius:var(--radius-md);
+  padding:22px; font-family:var(--serif); font-size:1.05rem; color:var(--wine-700); font-style:italic;
+  position:relative; min-height:120px; display:flex; align-items:center;
+}
+.dica-card:nth-child(3n+2){background:var(--cream-2); border-color:var(--line);}
+.dica-card:nth-child(3n){background:#fff; border-color:var(--rose-200);}
+
+/* ============ TRIBUNAL ============ */
+.tribunal-hero{
+  background:linear-gradient(155deg, var(--wine-800), var(--wine-900)); border-radius:var(--radius-lg);
+  padding:clamp(24px,5vw,40px); color:#fff; margin-top:10px;
+}
+.tribunal-stats{display:flex; gap:26px; flex-wrap:wrap; margin-top:18px;}
+.tribunal-stat b{display:block; font-family:var(--serif); font-size:1.6rem; color:var(--gold-300);}
+.tribunal-stat span{font-size:.78rem; color:rgba(255,255,255,.7);}
+.skins-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; margin-top:30px;}
+.skin-card{
+  background:#fff; border:1px solid var(--line); border-radius:var(--radius-md); overflow:hidden;
+  display:flex; flex-direction:column; cursor:pointer; transition:transform .18s ease, box-shadow .18s ease;
+}
+.skin-card:hover{transform:translateY(-3px); box-shadow:var(--shadow-md);}
+.skin-visual{
+  aspect-ratio:3/4; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;
+}
+.skin-visual svg{width:52px; height:52px; color:rgba(255,255,255,.9);}
+.skin-body{padding:14px 16px; display:flex; flex-direction:column; gap:8px;}
+.skin-body h4{font-size:.95rem; margin:0;}
+.skin-price{font-size:.76rem; color:var(--ink-soft);}
+.stars{display:flex; gap:3px;}
+.star-btn{background:none; border:none; cursor:pointer; padding:2px; color:var(--line);}
+.star-btn svg{width:19px; height:19px;}
+.star-btn.filled{color:var(--gold-500);}
+.skin-verdict{font-size:.78rem; color:var(--rose-600); font-weight:700; min-height:16px;}
+
+.ranking-box{margin-top:40px; background:#fff; border:1px solid var(--line); border-radius:var(--radius-lg); padding:clamp(20px,4vw,32px);}
+.rank-row{display:flex; align-items:center; gap:14px; padding:10px 0; border-bottom:1px solid var(--line);}
+.rank-row:last-child{border-bottom:none;}
+.rank-pos{font-family:var(--serif); font-weight:700; color:var(--rose-500); width:28px;}
+.rank-name{flex:1; font-weight:700; color:var(--wine-700); font-size:.94rem;}
+.rank-stars{display:flex; gap:2px; color:var(--gold-500);}
+.rank-stars svg{width:15px; height:15px;}
+
+.judgment-overlay{
+  position:fixed; inset:0; background:rgba(52,19,38,.75); backdrop-filter:blur(4px); z-index:80;
+  display:none; align-items:center; justify-content:center; padding:20px;
+}
+.judgment-overlay.show{display:flex;}
+.judgment-modal{
+  background:#fff; border-radius:var(--radius-lg); padding:0; max-width:600px; width:100%;
+  text-align:center; position:relative; overflow:hidden; max-height:92vh; overflow-y:auto;
+}
+.judgment-close{position:absolute; top:14px; right:14px; background:rgba(255,255,255,.85); border:none; width:34px; height:34px; border-radius:50%; cursor:pointer; z-index:2;}
+.judgment-splash{
+  width:100%; aspect-ratio:16/9; background:linear-gradient(135deg, var(--rose-300), var(--rose-500));
+  display:flex; align-items:center; justify-content:center; color:#fff;
+}
+.judgment-splash img{width:100%; height:100%; object-fit:cover; object-position:center 15%;}
+.judgment-body{padding:22px clamp(20px,5vw,36px) clamp(24px,5vw,36px);}
+.judgment-stars{display:flex; justify-content:center; gap:6px; margin:18px 0;}
+.judgment-stars svg{width:30px; height:30px;}
+.judgment-result{font-family:var(--serif); font-weight:700; color:var(--wine-700); font-size:1.2rem; min-height:1.6em;}
+
+/* ============ FINAL ============ */
+#final{
+  background:linear-gradient(180deg, var(--cream), var(--rose-50));
+  padding:110px 0 90px;
+}
+.final-frame{
+  max-width:420px; margin:32px auto 0; border-radius:28px; padding:14px; background:#fff;
+  box-shadow:var(--shadow-md); border:1px solid var(--rose-100);
+}
+.final-frame img{border-radius:18px;}
+.final-msg{text-align:center; max-width:520px; margin:0 auto;}
+.final-signature{
+  margin-top:30px; font-family:var(--serif); font-style:italic; font-size:1.1rem; color:var(--wine-700);
+}
+
+footer{padding:40px 24px; text-align:center; color:var(--ink-soft); font-size:.82rem;}
+
+/* ============ EASTER EGG TOAST ============ */
+#egg-toast{
+  position:fixed; bottom:24px; left:50%; transform:translate(-50%, 20px); z-index:90;
+  background:var(--wine-900); color:#fff; padding:14px 22px; border-radius:100px; font-weight:700;
+  font-size:.9rem; box-shadow:var(--shadow-md); opacity:0; pointer-events:none; transition:opacity .3s ease, transform .3s ease;
+  max-width:90vw; text-align:center;
+}
+#egg-toast.show{opacity:1; transform:translate(-50%, 0);}
+
+/* ============ SECRET COUNTER ============ */
+.secret-counter{
+  position:fixed; top:14px; right:14px; z-index:80;
+  background:rgba(52,19,38,.9); color:#fff; padding:8px 16px; border-radius:100px;
+  font-size:.78rem; font-weight:700; letter-spacing:.02em; box-shadow:var(--shadow-md);
+  opacity:0; transform:translateY(-10px); transition:opacity .4s ease, transform .4s ease;
+  pointer-events:none;
+}
+.secret-counter.show{opacity:1; transform:translateY(0);}
+@media (max-width:600px){ .secret-counter{ top:auto; bottom:70px; right:10px; font-size:.7rem; padding:7px 12px;} }
+
+.egg-hotspot{transition:transform .2s ease;}
+.egg-hotspot:hover{transform:scale(1.25);}
+
+/* ============ FINAL — DUPLA CAITVI ============ */
+.final-duo{display:flex; align-items:center; justify-content:center; gap:14px;}
+.final-duo-img{width:44%; max-width:220px; border-radius:16px; box-shadow:var(--shadow-sm);}
+.final-duo-heart{width:28px; height:28px; color:var(--rose-500); flex-shrink:0;}
+.final-duo-heart svg{width:100%; height:100%;}
+@media (max-width:520px){ .final-duo{gap:8px;} .final-duo-heart{width:20px; height:20px;} }
+
+/* ============ FLIPERAMA DA NIDALEE (MINI GAME) ============ */
+.spear-game{
+  background:linear-gradient(180deg, var(--wine-900), var(--wine-800) 70%);
+  border-radius:var(--radius-lg); padding:26px; box-shadow:var(--shadow-md); color:#fff;
+}
+.spear-hud{display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-bottom:16px;}
+.spear-score{font-weight:700; font-size:1rem;}
+.spear-score b{color:var(--gold-300);}
+.spear-dots{display:flex; gap:6px;}
+.spear-dots span{width:12px; height:12px; border-radius:50%; background:rgba(255,255,255,.2); display:inline-block; transition:background .2s ease, transform .2s ease;}
+.spear-dots span.hit{background:var(--gold-300); transform:scale(1.2);}
+.spear-arena{
+  position:relative; width:100%; height:min(46vh, 380px); border-radius:20px; overflow:hidden;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(231,156,192,.22), transparent 45%),
+    radial-gradient(circle at 75% 75%, rgba(199,154,59,.16), transparent 45%),
+    linear-gradient(160deg, #2a1220, #4a1e33 60%, #2a1220);
+  touch-action:none; cursor:crosshair; border:1px solid rgba(255,255,255,.08);
+}
+.spear-target{
+  position:absolute; width:64px; height:64px; left:50%; top:50%;
+  transform:translate(-50%,-50%); cursor:pointer;
+  animation:spearPulse 1.4s ease-in-out infinite;
+}
+.spear-target svg{width:100%; height:100%; display:block;}
+@keyframes spearPulse{0%,100%{transform:translate(-50%,-50%) scale(1);} 50%{transform:translate(-50%,-50%) scale(1.08);}}
+.spear-target.hit-anim{animation:spearHit .35s ease forwards;}
+@keyframes spearHit{
+  0%{opacity:1; transform:translate(-50%,-50%) scale(1);}
+  100%{opacity:0; transform:translate(-50%,-50%) scale(1.9);}
+}
+.spear-burst{position:absolute; width:10px; height:10px; border-radius:50%; background:var(--gold-300); pointer-events:none; animation:spearBurst .6s ease forwards;}
+@keyframes spearBurst{0%{opacity:1; transform:translate(-50%,-50%) scale(0);} 100%{opacity:0; transform:translate(-50%,-50%) scale(6);}}
+.spear-message{margin-top:16px; text-align:center; font-family:var(--serif); font-style:italic; font-size:1.15rem; min-height:1.6em; color:var(--gold-300);}
+@media (max-width:600px){ .spear-target{width:52px; height:52px;} }
+/* ---- fliperama arcade (várias rodadas) ---- */
+.arcade-lives{display:flex; gap:4px;}
+.arcade-lives svg{width:18px; height:18px; color:var(--rose-400);}
+.arcade-timerbar{height:6px; border-radius:100px; background:rgba(255,255,255,.14); overflow:hidden; margin-bottom:14px;}
+.arcade-timerbar-inner{height:100%; width:100%; background:linear-gradient(90deg, var(--gold-300), var(--rose-400));}
+.arcade-target{position:absolute; width:56px; height:56px; left:0; top:0; transform:none; cursor:pointer; touch-action:none; filter:drop-shadow(0 4px 10px rgba(0,0,0,.35));}
+.arcade-target.hit-anim{animation:arcadeHit .3s ease forwards;}
+@keyframes arcadeHit{0%{opacity:1; transform:scale(1);} 100%{opacity:0; transform:scale(1.7);}}
+.arcade-decoy{filter:drop-shadow(0 4px 10px rgba(174,59,69,.5));}
+.arcade-decoy svg{color:var(--red-500);}
+.arcade-combo-pop{position:absolute; transform:translate(-50%,-50%); font-family:var(--serif); font-weight:700; color:var(--gold-300); font-size:1.1rem; pointer-events:none; animation:comboPop .75s ease forwards;}
+@keyframes comboPop{0%{opacity:0; transform:translate(-50%,-50%) translateY(0);} 20%{opacity:1;} 100%{opacity:0; transform:translate(-50%,-50%) translateY(-30px);}}
+
+/* ============ MOBILE BOTTOM NAV SPACING ============ */
+@media (max-width:880px){
+  body{padding-bottom:4px;}
+}
+
+/* ============ HERO ============ */
+.hero-section{
+  position:relative; min-height:88vh; display:flex; align-items:flex-end; overflow:hidden;
+  border-radius:0 0 40px 40px;
+}
+.hero-splash{
+  position:absolute; inset:0; background-size:cover; background-position:center 20%;
+  transform:scale(1.04);
+}
+.hero-overlay{
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(52,19,38,.15) 0%, rgba(52,19,38,.35) 55%, var(--wine-900) 96%),
+             linear-gradient(90deg, rgba(52,19,38,.55), transparent 55%);
+}
+.hero-particles{position:absolute; inset:0; pointer-events:none; overflow:hidden;}
+.hero-lily{position:absolute; font-size:2.4rem; opacity:.5; animation:heroFloat 7s ease-in-out infinite;}
+.hero-lily-1{top:14%; left:8%; animation-delay:0s;}
+.hero-lily-2{top:22%; right:10%; animation-delay:1.4s; font-size:1.8rem;}
+.hero-lily-3{bottom:30%; left:14%; animation-delay:2.8s; font-size:1.6rem;}
+@keyframes heroFloat{0%,100%{transform:translateY(0) rotate(0);} 50%{transform:translateY(-16px) rotate(8deg);}}
+.hero-content{position:relative; z-index:2; padding:0 clamp(24px,6vw,64px) 64px; max-width:760px;}
+.hero-eyebrow{font-family:var(--sans); font-weight:700; color:var(--rose-200); letter-spacing:.06em; font-size:.85rem; text-transform:uppercase;}
+.hero-title{
+  font-family:var(--serif); color:#fff; font-size:clamp(3.2rem,10vw,6.2rem); line-height:.95; margin:10px 0 0;
+  text-shadow:0 4px 30px rgba(0,0,0,.4);
+}
+.hero-subtitle{font-family:var(--serif); font-style:italic; color:var(--rose-100); font-size:clamp(1.2rem,3vw,1.6rem); margin-top:6px;}
+.hero-cta{margin-top:30px;}
+@media (max-width:600px){ .hero-section{min-height:78vh; border-radius:0 0 26px 26px;} }
+
+/* ============ ABILITY ICONS / FORM TOGGLE ============ */
+.ability-icon-wrap{position:relative; width:60px; height:60px; flex-shrink:0;}
+.ability-icon-img{width:60px; height:60px; border-radius:16px; object-fit:cover; box-shadow:var(--shadow-sm); border:2px solid var(--rose-200);}
+.ability-key-badge{
+  position:absolute; bottom:-6px; right:-6px; background:var(--wine-800); color:#fff; font-family:var(--serif);
+  font-weight:700; font-size:.72rem; width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  border:2px solid #fff;
+}
+.form-toggle{display:inline-flex; gap:4px; background:var(--cream-2); border-radius:100px; padding:3px; margin:2px 0 10px;}
+.form-btn{
+  border:none; background:transparent; padding:6px 14px; border-radius:100px; font-size:.78rem; font-weight:700;
+  color:var(--ink-soft); cursor:pointer; transition:background .18s ease, color .18s ease;
+}
+.form-btn.active{background:var(--rose-500); color:#fff;}
+.form-desc{display:none; margin:0 0 10px; color:var(--ink-soft); font-size:.92rem;}
+.form-desc.active{display:block;}
+
+/* ============ COMBO TABS + ICON STEPS ============ */
+.combo-tab-row{display:flex; flex-wrap:wrap; gap:8px; margin-top:22px;}
+.combo-tab{
+  border:1.5px solid var(--rose-200); background:#fff; color:var(--wine-700); font-weight:700; font-size:.82rem;
+  padding:8px 16px; border-radius:100px; cursor:pointer; transition:background .18s ease, color .18s ease;
+}
+.combo-tab:hover{background:var(--rose-50);}
+.combo-tab.active{background:var(--rose-500); color:#fff; border-color:var(--rose-500);}
+.combo-step{display:inline-flex; align-items:center; gap:6px;}
+.combo-step img{width:22px; height:22px; border-radius:6px;}
+
+/* ============ JUNGLE MAP ============ */
+.jungle-route{display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:18px 0 26px; padding:16px; background:#fff; border:1px solid var(--line); border-radius:var(--radius-md);}
+.camps-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:12px;}
+.camp-card{
+  display:flex; flex-direction:column; align-items:center; gap:6px; background:#fff; border:1px solid var(--line);
+  border-radius:var(--radius-sm); padding:16px 10px; cursor:pointer; transition:transform .15s ease, box-shadow .15s ease;
+}
+.camp-card:hover{transform:translateY(-3px); box-shadow:var(--shadow-sm);}
+.camp-icon{font-size:1.8rem;}
+.camp-name{font-size:.8rem; font-weight:700; color:var(--wine-700); text-align:center;}
+.camp-risk-baixo{background:#E7F5EA; color:#357A47;}
+.camp-risk-medio{background:#FBF1DC; color:#8A6A1C;}
+.camp-risk-alto{background:#FBE6E6; color:var(--red-500);}
+.camp-risk-altissimo{background:var(--wine-900); color:#fff;}
+.camp-detail{display:none; margin-top:22px;}
+.camp-detail.show{display:block; animation:fadeUp .4s ease;}
+.camp-detail-inner{background:#fff; border:1px solid var(--line); border-radius:var(--radius-lg); padding:24px;}
+.camp-detail-head{display:flex; align-items:center; gap:12px; margin-bottom:16px;}
+.camp-detail-head h4{margin:0; flex:1;}
+
+/* ============ RUNES / BUILD VISUAL ============ */
+.rune-row{display:flex; gap:14px; align-items:flex-start;}
+.rune-tree-icon{width:26px; height:26px; border-radius:50%; background:var(--wine-800); padding:4px; flex-shrink:0;}
+.item-row{display:flex; align-items:center; flex-wrap:wrap; gap:6px; margin-top:8px;}
+.item-chip{display:inline-flex;}
+.item-chip img{width:34px; height:34px; border-radius:8px; border:1.5px solid var(--rose-200); box-shadow:var(--shadow-sm);}
+/* ---- árvore de runas completa (item 4 do briefing) ---- */
+.rune-tree-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:14px;}
+@media (max-width:520px){ .rune-tree-grid{grid-template-columns:1fr;} }
+.rune-col{background:var(--cream-2); border-radius:var(--radius-sm); padding:14px;}
+.rune-col-head{display:flex; align-items:center; gap:8px; margin-bottom:10px; font-size:.82rem; color:var(--wine-700);}
+.rune-pick{display:flex; align-items:center; gap:9px; padding:5px 0; font-size:.85rem; color:var(--ink-soft);}
+.rune-pick img{width:26px; height:26px; border-radius:50%; background:var(--wine-900); padding:3px; flex-shrink:0;}
+.rune-pick.keystone{font-weight:800; color:var(--wine-700); font-size:.92rem;}
+.rune-pick.keystone img{width:34px; height:34px; padding:4px; box-shadow:0 0 0 2px var(--gold-300);}
+.shard-row{display:flex; gap:8px; margin-top:12px; padding-top:10px; border-top:1px dashed var(--rose-200);}
+.rune-pick.shard{padding:0;}
+.rune-pick.shard img{width:22px; height:22px; background:var(--wine-800); padding:3px;}
+.item-timeline{display:flex; align-items:flex-start; flex-wrap:wrap; gap:2px; margin-top:10px;}
+.item-timeline-step{display:flex; flex-direction:column; align-items:center; gap:4px;}
+.item-timeline-step img{width:36px; height:36px; border-radius:9px; border:1.5px solid var(--rose-200); box-shadow:var(--shadow-sm);}
+.item-timeline-min{font-size:.66rem; font-weight:800; color:var(--rose-600); background:var(--rose-50); padding:2px 6px; border-radius:100px;}
+.item-timeline .combo-arrow{margin-top:14px;}
+
+/* ============ MATCHUP PORTRAIT ============ */
+.matchup-portrait{width:56px; height:56px; border-radius:14px; border:2px solid var(--rose-300); box-shadow:var(--shadow-sm);}
+
+/* ============ ACADEMY LEVEL CARDS ============ */
+.academy-grid{display:grid; gap:18px; margin-top:28px;}
+.level-card{background:#fff; border:1px solid var(--line); border-radius:var(--radius-lg); padding:22px; opacity:1; transition:opacity .2s ease;}
+.level-card.locked{opacity:.5;}
+.level-card.level-done{border-color:var(--rose-300); background:var(--rose-50);}
+.level-head{display:flex; align-items:center; gap:14px; margin-bottom:14px;}
+.level-icon{font-size:1.8rem;}
+.level-num{font-size:.7rem; font-weight:800; letter-spacing:.04em; color:var(--rose-500); display:block;}
+.level-head h4{margin:0;}
+.level-badge{margin-left:auto; font-size:.76rem; font-weight:800; color:var(--rose-600); background:var(--rose-100); padding:5px 12px; border-radius:100px;}
+.level-badge.locked{background:var(--cream-2); color:var(--ink-soft);}
+
+/* ============ CHEAT BUILDER — TEAM SLOTS ============ */
+.team-columns{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:24px;}
+@media (max-width:700px){ .team-columns{grid-template-columns:1fr;} }
+.team-col-title{font-size:.95rem; margin-bottom:12px;}
+.team-slot{margin-bottom:10px;}
+.team-slot-label{display:block; font-size:.7rem; font-weight:800; letter-spacing:.04em; color:var(--rose-500); margin-bottom:4px;}
+.slot-filled{
+  display:flex; align-items:center; gap:10px; background:#fff; border:1px solid var(--line); border-radius:var(--radius-sm);
+  padding:8px 12px;
+}
+.slot-filled img{width:32px; height:32px; border-radius:8px;}
+.slot-filled span{flex:1; font-weight:700; font-size:.88rem; color:var(--wine-700);}
+.slot-clear{background:none; border:none; color:var(--ink-soft); cursor:pointer; font-size:.9rem;}
+.slot-search{position:relative;}
+.slot-search input{
+  width:100%; padding:10px 14px; border-radius:var(--radius-sm); border:1.5px solid var(--rose-200); font-size:.9rem;
+  font-family:var(--sans); background:#fff;
+}
+.slot-results{
+  list-style:none; margin:6px 0 0; padding:0; position:absolute; width:100%; background:#fff; border:1px solid var(--line);
+  border-radius:var(--radius-sm); box-shadow:var(--shadow-md); max-height:220px; overflow-y:auto; z-index:6; display:none;
+}
+.slot-results.open{display:block;}
+.slot-results li button{
+  width:100%; display:flex; align-items:center; gap:8px; text-align:left; padding:8px 12px; background:none; border:none;
+  cursor:pointer; font-size:.86rem; font-weight:600; color:var(--wine-700);
+}
+.slot-results li button img{width:24px; height:24px; border-radius:6px;}
+.slot-results li button:hover{background:var(--rose-50);}
+.matchup-list li button img{width:24px; height:24px; border-radius:6px; margin-right:8px;}
+
+.analysis-box{margin-top:24px; background:linear-gradient(155deg, var(--wine-800), var(--wine-900)); color:#fff; border-radius:var(--radius-lg); padding:24px clamp(18px,4vw,30px);}
+.analysis-box h4{color:#fff;}
+.analysis-line{display:flex; gap:12px; align-items:flex-start; padding:8px 0; border-bottom:1px solid rgba(255,255,255,.12);}
+.analysis-line:last-child{border-bottom:none;}
+.analysis-line p{margin:0; font-size:.92rem; color:rgba(255,255,255,.92);}
+
+/* ============ SCOUT CHECKLIST ============ */
+.scout-grid{display:grid; gap:8px; margin-top:20px;}
+.scout-item{background:#fff; border:1px solid var(--line); border-radius:var(--radius-sm); padding:12px 16px; cursor:pointer;}
+.scout-item-head{display:flex; align-items:center; gap:10px;}
+.scout-box{width:16px; height:16px; border:2px solid var(--rose-300); border-radius:5px; flex-shrink:0;}
+.scout-item.open .scout-box{background:var(--rose-500); border-color:var(--rose-500);}
+.scout-text{font-size:.9rem; font-weight:600; color:var(--wine-700);}
+.scout-explain{display:none; margin:8px 0 0 26px; font-size:.85rem; color:var(--ink-soft);}
+.scout-item.open .scout-explain{display:block;}
+
+/* ============ CHEAT CHECK ICON ============ */
+.cheat-check-icon{width:16px; height:16px; color:var(--rose-500); flex-shrink:0;}
+
+/* ============ TRIBUNAL — SPLASH REAL ============ */
+.skin-visual img{width:100%; height:100%; object-fit:cover; object-position:top center; transition:transform .3s ease;}
+.skin-card:hover .skin-visual img{transform:scale(1.06);}
+.rank-thumb{width:34px; height:34px; border-radius:8px; object-fit:cover;}
+
+/* ============ FINAL DECORATION ============ */
+.final-frame{position:relative;}
+.final-frame::before, .final-frame::after{content:'🌸'; position:absolute; font-size:1.8rem; opacity:.7;}
+.final-frame::before{top:-14px; left:-14px;}
+.final-frame::after{bottom:-14px; right:-14px;}
+
+/* ============ IMAGEM SEGURA (fallback global) ============ */
+img{background:var(--cream-2);}
+img.img-fallback{object-fit:contain !important; padding:22%; opacity:.55; background:var(--rose-50);}
+
+/* ============ PATCH BADGE ============ */
+.patch-badge{
+  display:inline-flex; align-items:center; gap:10px; background:var(--wine-800); color:#fff;
+  border-radius:100px; padding:8px 18px; font-family:var(--sans); font-size:.8rem; font-weight:700;
+}
+.patch-badge b{font-family:var(--serif); font-size:1rem;}
+.patch-badge span{opacity:.75; font-weight:500;}
+
+/* ============ RESULTADOS DE BUSCA COM ROLE ============ */
+.matchup-list li button, .slot-results li button{justify-content:space-between;}
+.matchup-list li button em, .slot-results li button em{margin-left:auto; font-style:normal; font-size:.68rem; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.03em;}
+
+/* ============ MAPA DA JUNGLE — ESQUEMA SVG ============ */
+.rift-schematic{background:linear-gradient(160deg, var(--wine-900), var(--wine-800)); border-radius:var(--radius-lg); padding:18px; margin-top:20px;}
+.rift-svg{width:100%; height:auto; max-height:460px; display:block; margin:0 auto;}
+.rift-outline{fill:none; stroke:rgba(255,255,255,.3); stroke-width:1.5;}
+.rift-side{opacity:.55;}
+.rift-side-blue{fill:#1F3F63;}
+.rift-side-red{fill:#5A2432;}
+.rift-foliage{fill:#3E6B3A; opacity:.4;}
+.rift-lane{fill:none; stroke:rgba(255,255,255,.16); stroke-width:9; stroke-linecap:round;}
+.rift-lane-mid{stroke:rgba(255,255,255,.1); stroke-width:7;}
+.rift-river{fill:none; stroke:rgba(140,190,220,.3); stroke-width:13; stroke-linecap:round;}
+.rift-pit{opacity:.35;}
+.rift-pit-void{fill:#6A5AB0;}
+.rift-pit-fire{fill:#C0472F;}
+.rift-nexus{stroke:rgba(255,255,255,.7); stroke-width:1.5;}
+.rift-nexus-blue{fill:#5B9BD5;}
+.rift-nexus-red{fill:var(--red-500);}
+.rift-route{fill:none; stroke:var(--rose-300); stroke-width:2.5; stroke-dasharray:6 5; stroke-linecap:round; animation:riftDash 1.6s linear infinite;}
+@keyframes riftDash{to{stroke-dashoffset:-22;}}
+.rift-marker{cursor:pointer;}
+.rift-marker-bg{fill:var(--wine-700); stroke:rgba(255,255,255,.6); stroke-width:1.5; transition:fill .18s ease, r .18s ease;}
+.rift-marker.on-route .rift-marker-bg{fill:var(--rose-500);}
+.rift-marker:hover .rift-marker-bg{r:16.5;}
+.rift-marker foreignObject svg{display:block;}
+
+/* ============ CAMPS — ÍCONES VETORIAIS COLORIDOS ============ */
+.camp-icon svg{display:block;}
+.camp-card{position:relative;}
+.camp-card.on-route{border-color:var(--rose-400); background:var(--rose-50);}
+</style>
+</head>
+<body>
+
+<!-- ============ HEART / PETAL PARTICLE LAYER ============ -->
+<div class="heart-particles" id="particles" aria-hidden="true"></div>
+
+<!-- ============ GATE ============ -->
+<div id="gate">
+  <div class="gate-stripes" aria-hidden="true"></div>
+  <svg class="gate-tiger gate-tiger-left" viewBox="0 0 100 60" aria-hidden="true"><path d="M5 45c2-14 12-24 28-26 4-8 12-13 22-13 14 0 24 9 27 21 6 2 10 7 10 13 0 3-1 5-3 7-1-5-4-8-8-9 1 4 0 8-3 11-1-4-3-7-6-8 0 4-2 7-5 9-1-4-2-7-4-9-3 5-8 8-14 9-1-3-1-6 0-9-5 3-11 4-17 3-1-3 0-6 2-8-6 0-11-3-14-8-2 3-3 6-3 9-3-2-5-5-6-9-1 3-3 6-6 8z" fill="currentColor"/></svg>
+  <svg class="gate-tiger gate-tiger-right" viewBox="0 0 100 60" aria-hidden="true"><path d="M5 45c2-14 12-24 28-26 4-8 12-13 22-13 14 0 24 9 27 21 6 2 10 7 10 13 0 3-1 5-3 7-1-5-4-8-8-9 1 4 0 8-3 11-1-4-3-7-6-8 0 4-2 7-5 9-1-4-2-7-4-9-3 5-8 8-14 9-1-3-1-6 0-9-5 3-11 4-17 3-1-3 0-6 2-8-6 0-11-3-14-8-2 3-3 6-3 9-3-2-5-5-6-9-1 3-3 6-6 8z" fill="currentColor"/></svg>
+  <svg class="gate-kanok gate-kanok-tl" viewBox="0 0 100 100" aria-hidden="true"><path d="M2 2c20 0 25 8 25 8s-10-3-15 5c8-3 14 2 14 2s-9 1-11 9c7-5 14-2 14-2s-6 4-5 12c5-6 12-5 12-5s-3 6 2 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+  <svg class="gate-kanok gate-kanok-tr" viewBox="0 0 100 100" aria-hidden="true"><path d="M2 2c20 0 25 8 25 8s-10-3-15 5c8-3 14 2 14 2s-9 1-11 9c7-5 14-2 14-2s-6 4-5 12c5-6 12-5 12-5s-3 6 2 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+  <svg class="gate-kanok gate-kanok-bl" viewBox="0 0 100 100" aria-hidden="true"><path d="M2 2c20 0 25 8 25 8s-10-3-15 5c8-3 14 2 14 2s-9 1-11 9c7-5 14-2 14-2s-6 4-5 12c5-6 12-5 12-5s-3 6 2 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+  <svg class="gate-kanok gate-kanok-br" viewBox="0 0 100 100" aria-hidden="true"><path d="M2 2c20 0 25 8 25 8s-10-3-15 5c8-3 14 2 14 2s-9 1-11 9c7-5 14-2 14-2s-6 4-5 12c5-6 12-5 12-5s-3 6 2 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+  <div class="gate-eyebrow">🐆 feito especialmente para a futura Nidalee main 🌸</div>
+  <button class="gate-heart-btn" id="gateBtn" aria-label="Entrar no guia para minha lobotolinda">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.2-4.6-10-9.3C.4 8.6 1.6 5 5.1 4.1 7.4 3.5 9.7 4.5 12 7c2.3-2.5 4.6-3.5 6.9-2.9 3.5.9 4.7 4.5 3.1 7.6C19.2 16.4 12 21 12 21z"/></svg>
+  </button>
+  <div class="gate-btn-label">guia para minha lobotolinda! ♡</div>
+  <div class="gate-sub">prometo que dessa vez eu não vou mandar você pro dragão e ficar brava se você for fazer as vastilarvas</div>
+</div>
+
+<!-- ============ NAV ============ -->
+<nav id="nav" aria-label="Navegação principal">
+  <div class="nav-brand" style="display:none;">lobotolinda</div>
+  <div class="nav-inner" id="navInner">
+    <a class="nav-link" href="#hero" data-nav>♡ Início</a>
+    <a class="nav-link" href="#missao" data-nav>♡ Academia</a>
+    <a class="nav-link" href="#fase2" data-nav>♡ Nidalee</a>
+    <a class="nav-link" href="#fase3" data-nav>♡ Combos</a>
+    <a class="nav-link" href="#jungle" data-nav>♡ Mapa</a>
+    <a class="nav-link" href="#matchups" data-nav>♡ Matchups</a>
+    <a class="nav-link" href="#videos" data-nav>♡ Vídeos</a>
+    <a class="nav-link" href="#cheatsheet" data-nav>♡ Cheat Sheet</a>
+    <a class="nav-link" href="#tribunal" data-nav>♡ Tribunal</a>
+    <a class="nav-link" href="#fliperama" data-nav>♡ Fliperama</a>
+  </div>
+  <button class="nav-hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+  </button>
+</nav>
+
+<main id="site">
+
+  <!-- ============ HERO ============ -->
+  <section id="hero" class="hero-section">
+    <div class="hero-splash" id="heroSplash"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-particles" aria-hidden="true">
+      <button type="button" class="hero-lily hero-lily-1 egg-hotspot" data-egg="flower" aria-label="???" style="background:none;border:none;cursor:pointer;padding:0;">🌸</button>
+      <span class="hero-lily hero-lily-2">🌸</span>
+      <span class="hero-lily hero-lily-3">💗</span>
+    </div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">guia oficial da minha lobotolinda</div>
+      <h1 class="hero-title">NIDALEE</h1>
+      <div class="hero-subtitle">A Caçadora Bestial</div>
+      <div class="patch-badge egg-hotspot" data-egg="patch" style="margin-top:18px; cursor:pointer;"><b class="js-patch">Patch 16.17</b><span>· dado verificado na API oficial da Riot (Data Dragon)</span></div>
+      <a href="#desculpas" class="btn hero-cta" data-nav>Começar a jornada ♡</a>
+    </div>
+  </section>
+
+  <!-- ============ CONTADOR DE SEGREDOS ============ -->
+  <div id="secretCounter" class="secret-counter" aria-live="polite" title="Segredos descobertos">🌸 SEGREDOS DESCOBERTOS ♡ <span id="secretCounterVal">0</span>/<span id="secretCounterTotal">8</span></div>
+
+  <!-- ============ SEÇÃO 1 — DESCULPAS ============ -->
+  <section id="desculpas" class="section">
+    <div class="wrap">
+      <div class="eyebrow">antes de aprender a caçar...</div>
+      <h1 class="apology-title">Antes de você virar uma Nidalee main, deixa eu pedir desculpas.</h1>
+      <p class="apology-body">Júlia, eu queria começar te pedindo desculpas de verdade. Eu fiquei estressada com um jogo — <em>só um jogo</em> — e acabei descontando isso em você.</p>
+      <p class="apology-body">Você só estava tentando aprender a jogar de Nidalee, dando o seu melhor numa jungle que nem te expliquei direito, e eu, em vez de te ajudar com calma, virei o próprio Baron Nashor da paciência: grande, estressado e pronto pra explodir em cima de quem chegasse perto.</p>
+      <p class="apology-body">Então pensei numa solução do tamanho do meu arrependimento: já que você quer aprender Nidalee... eu vou construir um guia inteiro, feito com carinho, pra minha lobotolinda dominar a jungle. Runas, combos, matchups, vídeos, tudo. Sem pressa, sem grito, sem dragão.</p>
+      <div class="apology-note">
+        <svg class="heart-pop" viewBox="0 0 24 24" fill="currentColor" style="display:none;" id="apologyHeart"><path d="M12 21s-7.2-4.6-10-9.3C.4 8.6 1.6 5 5.1 4.1 7.4 3.5 9.7 4.5 12 7c2.3-2.5 4.6-3.5 6.9-2.9 3.5.9 4.7 4.5 3.1 7.6C19.2 16.4 12 21 12 21z"/></svg>
+        "Prometo tentar lembrar que você é muito mais importante do que qualquer dragão." ♡
+      </div>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true">
+    <span class="stem"></span>
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-1 3-3 4-3 7a3 3 0 006 0c0-3-2-4-3-7zM6 21c3-1 5-3 6-6-3 1-5 2-6 6zm12 0c-3-1-5-3-6-6 3 1 5 2 6 6z"/></svg>
+    <span class="stem"></span>
+  </div>
+
+  <!-- ============ SEÇÃO 2 — MISSÃO ============ -->
+  <section id="missao" class="section section-tight">
+    <div class="wrap-wide">
+      <div class="eyebrow">a missão</div>
+      <h2 style="font-size:clamp(1.6rem,4vw,2.2rem); color:var(--wine-800);">MISSÃO: transformar a lobotolinda em uma Nidalee main</h2>
+      <div class="mission-card">
+        <div class="mission-row">
+          <div class="mission-col">
+            <h4>OBJETIVO</h4>
+            <p>Aprender jungle + aprender Nidalee + parar de morrer nas Vastilarvas.</p>
+          </div>
+          <div class="mission-col">
+            <h4>RECOMPENSA</h4>
+            <p>1 namorada bem menos estressada + 999.999 pontos de fofura.</p>
+          </div>
+        </div>
+        <div class="progress-outer">
+          <div class="progress-inner" id="missionBar"></div>
+        </div>
+        <div class="progress-label" id="missionLabel">0% — Perdida na jungle</div>
+        <div class="progress-milestones">
+          <span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span>
+        </div>
+      </div>
+      <p style="margin-top:16px; font-size:.85rem; color:var(--ink-soft);">O progresso sobe conforme você marca as etapas do roadmap de treino lá embaixo — é de verdade, não é só decoração. ♡</p>
+    </div>
+  </section>
+
+  <!-- ============ FASE 0 ============ -->
+  <section id="fase0" class="section">
+    <div class="wrap-wide">
+      <div class="phase-head"><span class="phase-num">FASE 0</span><h2 style="margin:0;">O que diabos é uma jungle?</h2></div>
+      <p class="phase-intro">Zero pré-requisitos. Se você não sabe o que é um "camp" ou por que todo mundo grita "DRAGÃO" no chat, começa por aqui.</p>
+      <dl class="glossary-grid">
+        <div class="gloss-item"><dt>Jungle</dt><dd>A área neutra entre as quatro lanes, cheia de monstros (camps) que dão ouro e experiência pra quem os mata.</dd></div>
+        <div class="gloss-item"><dt>Jungler</dt><dd>O papel que vive nessa área, sem lane fixa — a função é farmar, ajudar as lanes com ganks e controlar objetivos.</dd></div>
+        <div class="gloss-item"><dt>Buffs (Red/Blue)</dt><dd>Os dois camps mais fortes. O Red dá dano extra e queimadura; o Blue dá mana e redução de cooldown. Valem ouro em cima.</dd></div>
+        <div class="gloss-item"><dt>Acampamentos (camps)</dt><dd>Cada grupo de monstros neutros (lobos, tartarugas, caranguejos, etc). "Limpar" um camp é matar tudo nele.</dd></div>
+        <div class="gloss-item"><dt>Smite</dt><dd>Feitiço de invocador exclusivo do jungler: dá dano fixo alto em um monstro, ótimo pra roubar objetivos ou terminar camps rápido.</dd></div>
+        <div class="gloss-item"><dt>Rio</dt><dd>A faixa de água que separa os dois lados do mapa. Tem os arautos escaravelho e é onde as brigas por objetivo costumam começar.</dd></div>
+        <div class="gloss-item"><dt>Dragões</dt><dd>Objetivo no rio de baixo. Cada dragão morto dá um bônus permanente pro time (dano, cura, etc), e matar 4 dá um bônus enorme extra.</dd></div>
+        <div class="gloss-item"><dt>Arauto</dt><dd>Monstro no rio de cima. Dá uma "arma" que ajuda a destruir uma torre rapidinho quando usada perto dela.</dd></div>
+        <div class="gloss-item"><dt>Barão Nashor</dt><dd>O objetivo mais forte do jogo, aparece mais tarde. Dá um buff enorme pro time inteiro por um tempo — muda o jogo se bem usado.</dd></div>
+        <div class="gloss-item"><dt>Vastilarvas (Void Grubs)</dt><dd>Aparecem cedo, na parte de baixo do mapa. Dão bônus de recall e enfraquecem torres — ótimas pra pressionar, mas não valem morrer por elas se um dragão real está sendo contestado.</dd></div>
+        <div class="gloss-item"><dt>Gank</dt><dd>Quando o jungler aparece de surpresa numa lane pra ajudar a matar o inimigo de lá.</dd></div>
+        <div class="gloss-item"><dt>Objetivo</dt><dd>Qualquer alvo neutro que muda o jogo se conquistado: dragão, arauto, vastilarvas, barão, torres.</dd></div>
+      </dl>
+      <div class="apology-note" style="margin-top:30px;">Regra de ouro da Fase 0: nenhum bichinho vale mais que a sua vida (ou a paciência da sua namorada). Se está em dúvida, dá pra perguntar antes de ir.</div>
+    </div>
+  </section>
+
+  <!-- ============ FASE 1 ============ -->
+  <section id="fase1" class="section section-tight">
+    <div class="wrap-wide">
+      <div class="phase-head"><span class="phase-num">FASE 1</span><h2 style="margin:0;">Aprendendo a não morrer</h2></div>
+      <p class="phase-intro">Antes de qualquer combo bonito, o objetivo número um é simples: sobreviver a própria jungle.</p>
+      <ul class="tip-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span><b>Pathing básico:</b> decida antes de entrar em qual ordem vai limpar os camps — normalmente começando pelo buff mais perto da sua lane favorita.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span><b>Onde começar:</b> comece sempre por um camp de buff com o Smite pronto — ele reduz o risco de ficar sem vida logo no primeiro camp.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span><b>Como limpar camps:</b> use habilidades que acertam vários monstros de uma vez e recue pra base quando a vida ou a mana estiverem baixas.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span><b>Controle de vida/mana:</b> nunca entre em uma luta ou objetivo com menos de 50% de vida sem um bom motivo.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span><b>Quando voltar pra base:</b> sempre que tiver ouro suficiente pra um item importante, ou quando a vida/mana estiver baixa demais pra continuar com segurança.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span><b>Visão importa:</b> colocar sentinelas no rio e na sua própria jungle evita que o jungler inimigo te pegue de surpresa.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span><b>Não invada sem informação:</b> só entre na jungle inimiga se souber (ou desconfiar fortemente) de onde está o jungler adversário.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span><b>Não faça objetivo às cegas:</b> antes de ir pro dragão ou pro barão, confirme onde está o time inimigo — objetivo sem visão costuma virar troca ruim.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span><b>Farm vs. gank:</b> farmar constrói seu poder aos poucos; gankar acelera o jogo pro seu time. Os dois têm valor — o segredo é saber qual a lane precisa em cada momento.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ FASE 2 — NIDALEE ============ -->
+  <section id="fase2" class="section">
+    <div class="wrap-wide">
+      <div class="phase-head"><span class="phase-num">FASE 2</span><h2 style="margin:0;">Primeiros passos de Nidalee</h2></div>
+      <p class="phase-intro">Nidalee tem duas formas: humana (poke e utilidade à distância) e puma/cougar (mobilidade e dano corpo a corpo). Dominar a troca entre as duas é o coração do personagem.</p>
+      <div class="ability-grid" id="abilityGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============ FASE 3 — COMBOS ============ -->
+  <section id="fase3" class="section section-tight">
+    <div class="wrap-wide">
+      <div class="phase-head"><span class="phase-num">FASE 3</span><h2 style="margin:0;">Combos básicos</h2></div>
+      <p class="phase-intro">Sequências pra treinar no modo prática antes de levar pra partida de verdade.</p>
+      <div class="combo-tab-row" id="comboCategoryTabs"></div>
+      <div class="combo-grid" id="comboGrid"></div>
+      <ul class="tip-list" style="margin-top:26px;">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span><b>Como acertar lanças:</b> mire na frente do movimento do inimigo, não em cima dele — a lança viaja em linha reta e ganha dano com a distância percorrida.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span><b>Use o W (Pounce) pra se reposicionar:</b> ele também serve como ferramenta de fuga, não só de engajamento.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span><b>Entrar e sair de fights:</b> a força da Nidalee é o hit-and-run — acerte o combo e recue, em vez de ficar trocando dano corpo a corpo.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span><b>Quando NÃO entrar:</b> sem o alvo marcado como "Hunted" e sem vantagem de vida, é melhor esperar mais poke antes de comprometer o combo inteiro.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true">
+    <span class="stem"></span>
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-1 3-3 4-3 7a3 3 0 006 0c0-3-2-4-3-7zM6 21c3-1 5-3 6-6-3 1-5 2-6 6zm12 0c-3-1-5-3-6-6 3 1 5 2 6 6z"/></svg>
+    <span class="stem"></span>
+  </div>
+
+  <!-- ============ SEÇÃO 4 — NIDALEE ACADEMY ============ -->
+  <section id="treino" class="section">
+    <div class="wrap-wide">
+      <div class="eyebrow">🌸 nidalee academy</div>
+      <h2 style="font-size:clamp(1.6rem,4vw,2.2rem);">Sua rotina de prática, em níveis</h2>
+      <p class="phase-intro">Complete um nível pra destravar o próximo. O progresso fica salvo automaticamente neste navegador — pode fechar e voltar quando quiser.</p>
+      <div id="academyRoot" class="academy-grid"></div>
+    </div>
+  </section>
+
+  <!-- ============ MAPA DA JUNGLE ============ -->
+  <section id="jungle" class="section section-tight">
+    <div class="wrap-wide">
+      <div class="eyebrow">onde caçar <button type="button" class="egg-hotspot" data-egg="paw" aria-label="???" style="background:none;border:none;cursor:pointer;padding:0;font-size:1em;">🐾</button></div>
+      <h2 style="font-size:clamp(1.6rem,4vw,2.2rem);">Mapa da Summoner's Rift</h2>
+      <p class="phase-intro">Escolha um caminho de jungle e clique em cada camp pra ver a dica certa pra Nidalee.</p>
+      <div id="jungleMapRoot"></div>
+    </div>
+  </section>
+
+  <!-- ============ SEÇÃO 5 — VÍDEOS ============ -->
+  <section id="videos" class="section section-tight">
+    <div class="wrap-wide">
+      <div class="eyebrow">escolinha da lobotolinda</div>
+      <h2 style="font-size:clamp(1.6rem,4vw,2.2rem);">Vídeos pra parar de sofrer na jungle</h2>
+      <p class="phase-intro">Não inventamos IDs de vídeo pra não te mandar pra link quebrado — cada card abre uma busca já pronta no YouTube pelo assunto certo, pra você escolher o criador que mais combina com seu jeito de aprender.</p>
+      <div class="video-grid" id="videoGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============ SEÇÃO 6 — MATCHUPS ============ -->
+  <section id="matchups" class="section">
+    <div class="wrap-wide">
+      <div class="eyebrow">quem apareceu na jungle inimiga?</div>
+      <h2 style="font-size:clamp(1.6rem,4vw,2.2rem);">Central de matchups</h2>
+      <p class="phase-intro">Busque o jungler adversário e veja runas, build e estratégia recomendadas.</p>
+      <div class="matchup-search">
+        <input type="text" id="matchupSearch" placeholder="Digite o nome do campeão... (ex: Rengar)" aria-label="Buscar campeão adversário" autocomplete="off">
+        <ul class="matchup-list" id="matchupResults"></ul>
+      </div>
+      <div class="matchup-chip-row" id="matchupChips"></div>
+      <div class="matchup-panel" id="matchupPanel"></div>
+      <p class="patch-note">Runas, itens e força geral da Nidalee refletem o build de meta atual (<span class="js-patch">Patch 16.17</span>), agregado de fontes como op.gg, Mobalytics, U.GG e Lolalytics. A força relativa de cada matchup específico é uma leitura estratégica com base nas mecânicas dos campeões — dados de build e runas podem mudar conforme o patch, então vale sempre checar o mais recente antes de uma partida ranqueada importante.</p>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true">
+    <span class="stem"></span>
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-1 3-3 4-3 7a3 3 0 006 0c0-3-2-4-3-7zM6 21c3-1 5-3 6-6-3 1-5 2-6 6zm12 0c-3-1-5-3-6-6 3 1 5 2 6 6z"/></svg>
+    <span class="stem"></span>
+  </div>
+
+  <!-- ============ SEÇÃO 7 — ANTI-TILT ============ -->
+  <section id="antitilt" class="section section-tight">
+    <div class="wrap">
+      <div class="antitilt-card">
+        <div class="eyebrow" style="color:var(--rose-100);">como não fazer o que aconteceu hoje</div>
+        <h2 style="color:#fff;">Guia definitivo pra não ir fazer as <button type="button" class="egg-hotspot" data-egg="vastilarvas" aria-label="???" style="background:none;border:none;cursor:pointer;padding:0;font:inherit;color:inherit;text-decoration:underline dotted;">Vastilarvas</button> quando a namorada mandar dragão</h2>
+        <p style="color:rgba(255,255,255,.9); margin-top:10px;">(e nem culpa é sua, sério — isso é só a gente rindo do que rolou hoje.) Se alguém gritar "DRAGÃO":</p>
+        <ol class="antitilt-steps">
+          <li>Respira.</li>
+          <li>Olha o minimapa.</li>
+          <li>Confirma onde está o jungler inimigo.</li>
+          <li>Vê se dá pra fazer o objetivo com segurança.</li>
+          <li>Só então vai.</li>
+        </ol>
+        <div class="antitilt-footer">E se ainda estiver em dúvida: pergunta pra sua namorada antes de morrer por causa de um bichinho roxo. Mas a namorada também está proibida de surtar. ❤️</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SEÇÃO 8 — CHEAT SHEET ============ -->
+  <section id="cheatsheet" class="section">
+    <div class="wrap-wide">
+      <div class="eyebrow">consulta rápida</div>
+      <h2 style="font-size:clamp(1.6rem,4vw,2.2rem);">Cheat sheet da Nidalee</h2>
+      <p class="phase-intro">Pra abrir rapidinho enquanto a partida carrega.</p>
+      <div class="cheat-grid" id="cheatGrid"></div>
+
+      <div class="divider" aria-hidden="true" style="margin-top:50px;">
+        <span class="stem"></span>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-1 3-3 4-3 7a3 3 0 006 0c0-3-2-4-3-7zM6 21c3-1 5-3 6-6-3 1-5 2-6 6zm12 0c-3-1-5-3-6-6 3 1 5 2 6 6z"/></svg>
+        <span class="stem"></span>
+      </div>
+
+      <div class="eyebrow" style="margin-top:40px;">🔮 antes de entrar no rift</div>
+      <h2 style="font-size:clamp(1.6rem,4vw,2.2rem);">Analisador da Jungle</h2>
+      <p class="phase-intro">Preencha os dois times pra ver uma leitura automática da partida — condição de vitória, ameaças e onde a Nidalee deve jogar.</p>
+      <div id="cheatBuilderRoot"></div>
+
+      <h3 style="margin-top:46px; font-size:1.1rem;">O que você precisa observar</h3>
+      <p class="phase-intro">Clique em cada pergunta pra ver uma explicação curta.</p>
+      <div id="scoutChecklist" class="scout-grid"></div>
+    </div>
+  </section>
+
+  <!-- ============ SEÇÃO 9 — DICAS ============ -->
+  <section id="dicas" class="section section-tight">
+    <div class="wrap-wide">
+      <div class="eyebrow">dicas que eu queria ter te dado antes</div>
+      <h2 style="font-size:clamp(1.6rem,4vw,2.2rem);">Pra guardar com carinho</h2>
+      <div class="dicas-grid" id="dicasGrid"></div>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true">
+    <span class="stem"></span>
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-1 3-3 4-3 7a3 3 0 006 0c0-3-2-4-3-7zM6 21c3-1 5-3 6-6-3 1-5 2-6 6zm12 0c-3-1-5-3-6-6 3 1 5 2 6 6z"/></svg>
+    <span class="stem"></span>
+  </div>
+
+  <!-- ============ SEÇÃO 10 — TRIBUNAL ============ -->
+  <section id="tribunal" class="section">
+    <div class="wrap-wide">
+      <div class="eyebrow">🌸 tribunal das nidalees 🌸</div>
+      <h2 style="font-size:clamp(1.6rem,4vw,2.2rem);">Somente a opinião da Lobotolinda será considerada válida.</h2>
+      <div class="tribunal-hero">
+        <p style="margin:0; color:rgba(255,255,255,.9);">Julgue cada skin com estrelas de 1 a 5. As notas ficam salvas neste navegador e formam automaticamente o seu ranking pessoal de favoritas.</p>
+        <div class="tribunal-stats">
+          <div class="tribunal-stat"><b id="statJudged">0/17</b><span>skins julgadas</span></div>
+          <div class="tribunal-stat"><b id="statAvg">—</b><span>veredito médio</span></div>
+          <div class="tribunal-stat"><b id="statFav">—</b><span>favorita atual</span></div>
+        </div>
+      </div>
+      <div class="skins-grid" id="skinsGrid"></div>
+      <p style="font-size:.78rem; color:var(--ink-soft); opacity:.8; margin-top:16px;">Artes oficiais da Riot Games (Data Dragon). Preços em RP referem-se ao valor de lançamento de cada skin e podem ter mudado.</p>
+
+      <div class="ranking-box">
+        <h3 style="font-size:1.1rem;">🏆 Favoritas da Lobotolinda</h3>
+        <div id="rankingList"></div>
+        <p style="font-size:.8rem; color:var(--ink-soft); margin-top:14px; font-style:italic;">Essa classificação é cientificamente comprovada pelo Instituto Internacional da Lobotolinda.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SEÇÃO 11 — FLIPERAMA DA NIDALEE (MINI GAME) ============ -->
+  <section id="fliperama" class="section">
+    <div class="wrap">
+      <div class="eyebrow">🎮 hora de provar que aprendeu</div>
+      <h2 style="font-size:clamp(1.6rem,4vw,2.2rem);">Fliperama da Nidalee</h2>
+      <p class="phase-intro">Cinco rodadas, cada vez mais rápidas. Acerte os camps com a lança antes que o tempo acabe — mas não fure os coraçõezinhos, esses não valem ponto.</p>
+      <div id="arcadeRoot"></div>
+    </div>
+  </section>
+
+  <!-- ============ FINAL UNLOCK MODAL ============ -->
+  <div class="judgment-overlay" id="finalUnlockOverlay">
+    <div class="judgment-modal" style="text-align:center;">
+      <button class="judgment-close" id="finalUnlockClose" aria-label="Fechar">✕</button>
+      <div class="eyebrow" style="justify-content:center; display:flex;">💗 você conseguiu 💗</div>
+      <h3 style="margin:6px 0 14px;">PARABÉNS, LOBOTOLINDA.</h3>
+      <p style="margin:0 0 10px;">Você sobreviveu à jungle.</p>
+      <p style="margin:0; font-style:italic; color:var(--wine-700);">Agora só falta não ir fazer as Vastilarvas quando eu falar dragão.</p>
+    </div>
+  </div>
+
+  <!-- ============ JUDGMENT MODAL ============ -->
+  <div class="judgment-overlay" id="judgmentOverlay">
+    <div class="judgment-modal">
+      <button class="judgment-close" id="judgmentClose" aria-label="Fechar">✕</button>
+      <div class="judgment-splash" id="judgmentSplash"></div>
+      <div class="judgment-body">
+        <div class="eyebrow">⚖️ o tribunal está em sessão</div>
+        <h3 id="judgmentSkinName" style="margin-bottom:4px;">—</h3>
+        <p style="color:var(--ink-soft); font-size:.9rem;">Qual o seu veredito?</p>
+        <div class="judgment-stars" id="judgmentStars"></div>
+        <div class="judgment-result" id="judgmentResult"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SEÇÃO FINAL — CAITVI ============ -->
+  <section id="final" class="section">
+    <div class="wrap">
+      <div class="final-msg">
+        <div class="eyebrow" style="justify-content:center; display:flex;">antes de você ir...</div>
+        <h2 style="font-size:clamp(1.6rem,4vw,2.2rem);">Só mais uma coisinha.</h2>
+      </div>
+      <div class="final-frame" id="finalArt"></div>
+      <div class="final-msg" style="margin-top:34px;">
+        <p style="font-size:1.05rem;">Desculpa por hoje, Júlia. ❤️</p>
+        <p style="font-size:1.05rem;">Eu te amo muito mais do que gosto de ganhar uma partida.</p>
+        <p style="font-size:1.05rem;">Agora vai aprender Nidalee e destruir todo mundo — inclusive quem for fazer as Vastilarvas na frente do seu dragão.</p>
+        <div class="final-signature">
+          Com amor,<br>
+          sua namorada que provavelmente ainda vai dar call errada,<br>
+          mas que te ama muito. ❤️
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>feito com <button type="button" class="egg-hotspot" data-egg="signature" aria-label="???" style="background:none;border:none;cursor:pointer;padding:0;font:inherit;color:inherit;">❤️</button>, um pouco de tilt e muitas Vastilarvas não perdoadas — pra Júlia.</footer>
+
+<div id="egg-toast" role="status" aria-live="polite"></div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
